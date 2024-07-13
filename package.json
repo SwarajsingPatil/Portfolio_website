@@ -16,7 +16,7 @@
     "react-use-gesture": "^9.1.3",
     "web-vitals": "^2.1.4"
   },
-  "homepage": "https://SwarajsingPatil.github.io/portfolio-website",
+  "homepage": "https://swarajsingpatil.github.io/Portfolio_website/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
