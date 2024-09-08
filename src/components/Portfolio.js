@@ -40,7 +40,22 @@ const Portfolio = () => {
   const contactRef = useRef(null);
   const [refs, setRefs] = useState({});
   const containerRef = useRef(null);
+  const [showResume, setShowResume] = useState(false);
 
+  const toggleResume = () => {
+    setShowResume(!showResume);
+  };
+  const scrollToSection = (sectionRef) => {
+    if (sectionRef && sectionRef.current) {
+      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+      setActiveSection(sectionRef);
+    }
+    setMenuOpen(false);
+  };
+
+  const scrollToWorkExperience = () => {
+    scrollToSection(timelineRef);
+  };
   useEffect(() => {
     const handleScroll = () => {
       const position = window.pageYOffset;
@@ -141,13 +156,7 @@ const Portfolio = () => {
     setDarkMode(!darkMode);
   };
 
-  const scrollToSection = (sectionRef) => {
-    if (sectionRef && sectionRef.current) {
-      sectionRef.current.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(sectionRef);
-    }
-    setMenuOpen(false);
-  };
+
 
   const timelineItems = [
     {
@@ -181,8 +190,53 @@ const Portfolio = () => {
     // Add more items here, mixing experience and education
   ];
 
-  
+  // const toggleResume = () => {
+  //   setShowResume(!showResume);
+  // };
 
+  const ResumeModal = ({ toggleResume }) => {
+    useEffect(() => {
+      // Disable scroll on the main page
+      document.body.style.overflow = 'hidden';
+      
+      // Re-enable scroll when component unmounts
+      return () => {
+        document.body.style.overflow = 'unset';
+      };
+    }, []);
+  
+    return (
+      <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center p-4 overflow-y-auto">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl w-full h-full max-w-7xl max-h-[95vh] flex flex-col">
+          <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Resume</h2>
+            <button 
+              onClick={toggleResume} 
+              className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors"
+            >
+              <XIcon size={24} />
+            </button>
+          </div>
+          <div className="flex-grow overflow-auto">
+            <iframe
+              src={process.env.PUBLIC_URL + '/Resume.pdf'}
+              className="w-full h-full border-0"
+              title="Resume"
+            />
+          </div>
+          <div className="p-4 border-t border-gray-200 dark:border-gray-700">
+            <a
+              href={process.env.PUBLIC_URL + '/Resume.pdf'}
+              download="Swarajsing_Patil_Resume.pdf"
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+            >
+              <DownloadIcon size={18} className="mr-2" /> Download PDF
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  };
   return (
     <animated.div style={darkModeAnimation} className="min-h-screen">
       <animated.nav style={navbarAnimation} className="bg-white dark:bg-gray-800 shadow-md fixed top-0 left-0 right-0 z-10">
@@ -235,26 +289,33 @@ const Portfolio = () => {
         )}
       </animated.nav>
 
-      <HeroSection scrollPosition={scrollPosition} darkMode={darkMode} />
+      <HeroSection 
+        scrollPosition={scrollPosition} 
+        darkMode={darkMode} 
+        scrollToWorkExperience={scrollToWorkExperience} // Pass the new function as a prop
+      />
 
       <div ref={aboutRef} className="max-w-4xl mx-auto p-4">
-        <AnimatedSection className="mb-8">
+        <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">About Me</h2>
           <p className="text-gray-600 dark:text-gray-300">
             Experienced DevOps Engineer and Full Stack Developer with a strong background in cloud technologies,
             web development, and data engineering. Passionate about creating scalable and efficient solutions.
           </p>
-          <button className="mt-4 flex items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">
-            <DownloadIcon className="mr-2" /> Download Resume
+          <button 
+            onClick={toggleResume} 
+            className="mt-4 flex items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
+          >
+            <DownloadIcon className="mr-2" /> View Resume
           </button>
-        </AnimatedSection>
+        </section>
 
         <div ref={skillsRef}>
   <AnimatedSection className="mb-8">
     <Skills />
   </AnimatedSection>
 </div>
-        
+{showResume && <ResumeModal toggleResume={toggleResume} />}
       <div ref={timelineRef}>
         <section id="timeline" className="py-16">
         <h2 className="text-3xl font-bold mb-8 text-center text-white">Experience & Education</h2>
