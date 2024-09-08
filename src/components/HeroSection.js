@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSpring, animated, config } from 'react-spring';
 import { ChevronDown } from 'lucide-react';
 
-const FancyButton = ({ isInverted }) => {
+const FancyButton = ({ isInverted, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const buttonSpring = useSpring({
@@ -18,6 +18,7 @@ const FancyButton = ({ isInverted }) => {
       style={buttonSpring}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
       className={`
         relative px-6 py-3 rounded-full font-bold text-base
         transition-all duration-300 focus:outline-none
@@ -36,7 +37,7 @@ const FancyButton = ({ isInverted }) => {
   );
 };
 
-const HeroSection = ({ scrollPosition }) => {
+const HeroSection = ({ scrollPosition, scrollToWorkExperience }) => {
   const [isInverted, setIsInverted] = useState(true);
 
   useEffect(() => {
@@ -78,7 +79,7 @@ const HeroSection = ({ scrollPosition }) => {
         <p className="text-lg mb-8">
           Passionate about creating efficient and scalable solutions
         </p>
-        <FancyButton isInverted={isInverted} />
+        <FancyButton isInverted={isInverted} onClick={scrollToWorkExperience} />
       </animated.div>
       <animated.div style={fadeIn} className="absolute bottom-10 animate-bounce">
         <ChevronDown size={32} />
