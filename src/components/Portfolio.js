@@ -219,7 +219,7 @@ const Portfolio = () => {
           </div>
           <div className="flex-grow overflow-auto">
             <iframe
-              src={process.env.PUBLIC_URL + '/Resume.pdf'}
+              src={process.env.PUBLIC_URL + '/Swarajsing_Resume.pdf'}
               className="w-full h-full border-0"
               title="Resume"
             />
