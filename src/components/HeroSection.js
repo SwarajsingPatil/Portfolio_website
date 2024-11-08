@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSpring, animated, config } from 'react-spring';
 import { ChevronDown } from 'lucide-react';
+import '../styles/globals.css';
 
 const FancyButton = ({ isInverted, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -67,15 +68,100 @@ const HeroSection = ({ scrollPosition, scrollToWorkExperience }) => {
     config: { tension: 200, friction: 20 },
   });
 
+  const roles = [
+    "Full Stack Developer",
+    "Software Engineer",
+    "UI/UX Enthusiast",
+    "Problem Solver",
+    "Solutions Architect"
+  ];
+  
+  const [currentRole, setCurrentRole] = useState('');
+  const [isScrambling, setIsScrambling] = useState(true);
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [isCompleted, setIsCompleted] = useState(false);
+  
+  const characters = 'abcdefghijklmnopqrstuvwxyz/_';
+  
+  const scrambleText = useCallback((finalText, progress) => {
+    return finalText
+      .split('')
+      .map((char, index) => {
+        if (index < progress) return finalText[index];
+        if (char === ' ') return ' ';
+        return characters[Math.floor(Math.random() * characters.length)];
+      })
+      .join('');
+  }, []);
+
+  useEffect(() => {
+    let frame = 0;
+    let currentProgress = 0;
+    const targetText = roles[roleIndex];
+    let animationFrameId;
+    let timeoutId;
+    
+    setIsCompleted(false);
+    setIsScrambling(true);
+    
+    const updateText = () => {
+      if (!isScrambling) return;
+      
+      frame++;
+      if (frame % 3 === 0) {
+        currentProgress++;
+      }
+      
+      const newText = scrambleText(targetText, currentProgress);
+      setCurrentRole(newText);
+      
+      if (currentProgress <= targetText.length) {
+        animationFrameId = requestAnimationFrame(updateText);
+      } else {
+        setIsCompleted(true);
+        timeoutId = setTimeout(() => {
+          setIsCompleted(false);
+          setIsScrambling(true);
+          setRoleIndex((prev) => (prev + 1) % roles.length);
+        }, 3000);
+      }
+    };
+    
+    updateText();
+    return () => {
+      currentProgress = targetText.length;
+    };
+  }, [roleIndex, isScrambling, scrambleText]);
+
   return (
     <animated.div style={colorTransition} className="min-h-screen flex flex-col items-center justify-center relative">
       <animated.div style={fadeIn} className="text-center">
         <animated.h1 style={nameTransition} className="font-bold mb-4">
           Swarajsing Patil
         </animated.h1>
-        <p className="text-xl mb-6">
-          Software Engineer with MS in CS
-        </p>
+        
+        <div className="h-12 relative text-xl mb-6 font-bold">
+          <p 
+            className={`text-2xl font-mono tracking-wide transition-all duration-500 bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-600 text-transparent bg-clip-text
+              ${isCompleted ? 'glow-effect' : ''}`}
+            style={{
+              textShadow: isCompleted 
+                ? '0 0 10px rgba(96, 165, 250, 0.8), 0 0 20px rgba(139, 92, 246, 0.6)' 
+                : 'none',
+              transition: 'text-shadow 0.5s ease-in-out, color 0.5s ease-in-out'
+            }}
+          >
+            {currentRole || '\u00A0'}
+          </p>
+          
+          {/* <div 
+            className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-px bg-blue-400 transition-all duration-500
+              ${isCompleted ? 'w-full opacity-50' : 'w-0 opacity-0'}`}
+            style={{
+              boxShadow: '0 0 10px rgba(96, 165, 250, 0.5)',
+            }}
+          /> */}
+        </div>
         <p className="text-lg mb-8">
           Passionate about creating efficient and scalable solutions
         </p>
