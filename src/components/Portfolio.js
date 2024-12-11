@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { GithubIcon, LinkedinIcon, MailIcon, MenuIcon, XIcon, MoonIcon, SunIcon, DownloadIcon } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, MailIcon, MenuIcon, XIcon, DownloadIcon } from 'lucide-react';
 import { useSpring, animated, config } from 'react-spring';
 import { useInView } from 'react-intersection-observer';
 import HeroSection from './HeroSection';
 import Timeline from './Timeline';
-import ProjectCarousel from './ProjectCarousel';
 import Skills from './Skill';
-
+import ProjectsScramble from './ProjectsScramle';
 
 const AnimatedSection = ({ children, className }) => {
   const [ref, inView] = useInView({
@@ -45,6 +44,7 @@ const Portfolio = () => {
   const toggleResume = () => {
     setShowResume(!showResume);
   };
+
   const scrollToSection = (sectionRef) => {
     if (sectionRef && sectionRef.current) {
       sectionRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -56,6 +56,7 @@ const Portfolio = () => {
   const scrollToWorkExperience = () => {
     scrollToSection(timelineRef);
   };
+
   useEffect(() => {
     const handleScroll = () => {
       const position = window.pageYOffset;
@@ -100,46 +101,81 @@ const Portfolio = () => {
     </button>
   );
 
-  const projects = [
-    {
-      title: "Nurture Nest / Baby Care",
-      description: "Boosted user engagement by 30% through engineering a job module using React and Redux. Reduced time-to-hire by 25% with an Applicant Hiring portal using Firebase authentication. Enhanced communication with real-time chat implementation using socket.io.",
-      image: "https://zero-to-three.s3.amazonaws.com/images/1404/736d9d21-7a02-4ab3-a02b-e5de2f5942f9-small.jpg?1487014786",
-      link: "https://github.com/yourusername/nurture-nest"
-    },
-    {
-      title: "Fast API E-Commerce",
-      description: "Optimized product browsing and purchasing by developing an e-commerce platform with Python FastAPI. Restricted unauthorized access attempts by integrating JWT authentication. Improved message processing time by 60% and deployment time by 30% with Kafka and Docker.",
-      image: "https://d1u4v6449fgzem.cloudfront.net/2020/03/The-Ecommerce-Business-Model-Explained.jpg",
-      link: "https://github.com/yourusername/fastapi-ecommerce"
-    },
-    {
-      title: "Java-web-bookstore",
-      description: "Developed with Spring Boot and Thymeleaf, optimized MySQL queries with 25% faster data retrieval.",
-      image: "/path-to-project-image.jpg",
-      link: "https://github.com/yourusername/java-web-bookstore"
-    },
-    {
-      title: "Stowage Planner",
-      description: "Flask-based web app, reduced 40% loading time & increased user satisfaction by 30% with optimized algorithms.",
-      image: "/path-to-project-image.jpg",
-      link: "https://github.com/yourusername/stowage-planner"
-    },
-    {
-      title: "SubSplit-Subscription",
-      description: "Streamlined shared memberships & interest-based groups management with MongoDB & NodeJS.",
-      image: "/path-to-project-image.jpg",
-      link: "https://github.com/yourusername/subsplit-subscription"
-    },
-    {
-      title: "Multiplayer Tic-Tac-Toe",
-      description: "Real-time collaboration app with FluidFramework, Puppeteer, Docker with login and admin features.",
-      image: "/path-to-project-image.jpg",
-      link: "https://github.com/yourusername/multiplayer-tic-tac-toe"
-    },
-    // Add more projects here
-  ];
+  // const projects = [
+  //   {
+  //     title: "Nurture Nest / Baby Care",
+  //     description: "Boosted user engagement by 30% through engineering a job module using React and Redux. Reduced time-to-hire by 25% with an Applicant Hiring portal using Firebase authentication. Enhanced communication with real-time chat implementation using socket.io.",
+  //     image: "https://zero-to-three.s3.amazonaws.com/images/1404/736d9d21-7a02-4ab3-a02b-e5de2f5942f9-small.jpg?1487014786",
+  //     link: "https://github.com/yourusername/nurture-nest"
+  //   },
+  //   {
+  //     title: "Fast API E-Commerce",
+  //     description: "Optimized product browsing and purchasing by developing an e-commerce platform with Python FastAPI. Restricted unauthorized access attempts by integrating JWT authentication. Improved message processing time by 60% and deployment time by 30% with Kafka and Docker.",
+  //     image: "https://d1u4v6449fgzem.cloudfront.net/2020/03/The-Ecommerce-Business-Model-Explained.jpg",
+  //     link: "https://github.com/yourusername/fastapi-ecommerce"
+  //   },
+  //   {
+  //     title: "Java-web-bookstore",
+  //     description: "Developed with Spring Boot and Thymeleaf, optimized MySQL queries with 25% faster data retrieval.",
+  //     image: "/path-to-project-image.jpg",
+  //     link: "https://github.com/yourusername/java-web-bookstore"
+  //   },
+  //   {
+  //     title: "Stowage Planner",
+  //     description: "Flask-based web app, reduced 40% loading time & increased user satisfaction by 30% with optimized algorithms.",
+  //     image: "/path-to-project-image.jpg",
+  //     link: "https://github.com/yourusername/stowage-planner"
+  //   },
+  //   {
+  //     title: "SubSplit-Subscription",
+  //     description: "Streamlined shared memberships & interest-based groups management with MongoDB & NodeJS.",
+  //     image: "/path-to-project-image.jpg",
+  //     link: "https://github.com/yourusername/subsplit-subscription"
+  //   },
+  //   {
+  //     title: "Multiplayer Tic-Tac-Toe",
+  //     description: "Real-time collaboration app with FluidFramework, Puppeteer, Docker with login and admin features.",
+  //     image: "/path-to-project-image.jpg",
+  //     link: "https://github.com/yourusername/multiplayer-tic-tac-toe"
+  //   },
+  //   // Add more projects here
+  // ];
+
+
   
+    const projects = [
+    {
+      title: "AI Chat Application",
+      description: `• Built a real-time chat application using Next.js 13, integrating OpenAI's GPT-3.5 API for intelligent responses
+• Implemented WebSocket connections with Socket.io, enabling instant message delivery with 50ms latency
+• Designed a responsive UI with Tailwind CSS and Framer Motion, achieving a 95+ mobile responsiveness score
+• Deployed using Docker and AWS EC2, maintaining 99.9% uptime and handling 1000+ daily active users`,
+      tech: ["Next.js", "OpenAI", "Socket.io", "Docker", "AWS"],
+      link: "https://github.com/yourusername/ai-chat",
+      demo: "https://ai-chat-demo.com"
+    },
+    {
+      title: "E-Commerce Platform",
+      description: `• Developed a full-stack e-commerce platform using MERN stack with TypeScript, serving 10k+ monthly users
+• Integrated Stripe payment gateway and implemented cart functionality with Redux Toolkit for state management
+• Optimized image loading using Next.js Image component and lazy loading, improving load time by 40%
+• Implemented JWT authentication and role-based access control for secure user management`,
+      tech: ["React", "Node.js", "MongoDB", "TypeScript", "Redux"],
+      link: "https://github.com/yourusername/ecommerce",
+      demo: "https://ecommerce-demo.com"
+    },
+    {
+      title: "Portfolio Website",
+      description: `• Created a modern portfolio website using React and Three.js for interactive 3D elements
+• Implemented smooth animations and transitions using Framer Motion
+• Achieved 100% lighthouse performance score through optimization techniques
+• Designed and developed a custom CMS for easy content management`,
+      tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
+      link: "https://github.com/yourusername/portfolio",
+      demo: "https://your-portfolio.com"
+    }
+  ];
+
 
   const navbarAnimation = useSpring({
     opacity: scrollPosition > 100 ? 1 : 0,
@@ -151,12 +187,6 @@ const Portfolio = () => {
     backgroundColor: darkMode ? 'rgb(17, 24, 39)' : 'rgb(255, 255, 255)',
     color: darkMode ? 'rgb(229, 231, 235)' : 'rgb(31, 41, 55)',
   });
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
-
 
   const timelineItems = [
     {
@@ -187,24 +217,17 @@ const Portfolio = () => {
       description: 'Gained a strong foundation in computer science fundamentals and software development.',
       type: 'education'
     },
-    // Add more items here, mixing experience and education
   ];
-
-  // const toggleResume = () => {
-  //   setShowResume(!showResume);
-  // };
 
   const ResumeModal = ({ toggleResume }) => {
     useEffect(() => {
       // Disable scroll on the main page
       document.body.style.overflow = 'hidden';
-      
-      // Re-enable scroll when component unmounts
       return () => {
         document.body.style.overflow = 'unset';
       };
     }, []);
-  
+
     return (
       <div className="fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center p-4 overflow-y-auto">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl w-full h-full max-w-7xl max-h-[95vh] flex flex-col">
@@ -237,8 +260,9 @@ const Portfolio = () => {
       </div>
     );
   };
+
   return (
-    <animated.div style={darkModeAnimation} className="min-h-screen">
+    <animated.div style={darkModeAnimation} className="min-h-screen" ref={containerRef}>
       <animated.nav style={navbarAnimation} className="bg-white dark:bg-gray-800 shadow-md fixed top-0 left-0 right-0 z-10">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex items-center justify-between h-16">
@@ -247,22 +271,14 @@ const Portfolio = () => {
             </div>
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-4">
-              <div className="ml-10 flex items-baseline space-x-4">
                 <NavLink sectionRef={aboutRef}>About</NavLink>
                 <NavLink sectionRef={skillsRef}>Skills</NavLink>
                 <NavLink sectionRef={timelineRef}>Experience & Education</NavLink>
                 <NavLink sectionRef={projectsRef}>Projects</NavLink>
                 <NavLink sectionRef={contactRef}>Contact</NavLink>
               </div>
-              </div>
             </div>
             <div className="flex items-center">
-              {/* <button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-              >
-                {darkMode ? <SunIcon className="h-6 w-6" /> : <MoonIcon className="h-6 w-6" />}
-              </button> */}
               <div className="md:hidden ml-2">
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
@@ -278,12 +294,11 @@ const Portfolio = () => {
         {menuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <NavLink sectionId="about">About</NavLink>
-              <NavLink sectionId="skills">Skills</NavLink>
-              <NavLink sectionId="experience">Experience</NavLink>
-              <NavLink sectionId="education">Education</NavLink>
-              <NavLink sectionId="projects">Projects</NavLink>
-              <NavLink sectionId="contact">Contact</NavLink>
+              <button onClick={() => scrollToSection(aboutRef)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">About</button>
+              <button onClick={() => scrollToSection(skillsRef)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Skills</button>
+              <button onClick={() => scrollToSection(timelineRef)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Experience & Education</button>
+              <button onClick={() => scrollToSection(projectsRef)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Projects</button>
+              <button onClick={() => scrollToSection(contactRef)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Contact</button>
             </div>
           </div>
         )}
@@ -292,10 +307,11 @@ const Portfolio = () => {
       <HeroSection 
         scrollPosition={scrollPosition} 
         darkMode={darkMode} 
-        scrollToWorkExperience={scrollToWorkExperience} // Pass the new function as a prop
+        scrollToWorkExperience={scrollToWorkExperience}
       />
 
-      <div ref={aboutRef} className="max-w-4xl mx-auto p-4">
+      {/* About Section */}
+      <div ref={aboutRef} id="about" className="max-w-4xl mx-auto p-4">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">About Me</h2>
           <p className="text-gray-600 dark:text-gray-300">
@@ -309,39 +325,36 @@ const Portfolio = () => {
             <DownloadIcon className="mr-2" /> View Resume
           </button>
         </section>
-
-        <div ref={skillsRef}>
-  <AnimatedSection className="mb-8">
-    <Skills />
-  </AnimatedSection>
-</div>
-{showResume && <ResumeModal toggleResume={toggleResume} />}
-      <div ref={timelineRef}>
-        <section id="timeline" className="py-16">
-        <h2 className="text-3xl font-bold mb-8 text-center text-white">Experience & Education</h2>
-        <Timeline items={timelineItems} />
-      </section>
       </div>
 
-        {/* <AnimatedSection id="experience" className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">Work Experience</h2>
-          <Timeline items={experienceItems} />
+      {showResume && <ResumeModal toggleResume={toggleResume} />}
+
+      {/* Skills Section */}
+      <div ref={skillsRef} id="skills" className="max-w-4xl mx-auto p-4">
+        <AnimatedSection className="mb-8">
+          <Skills />
         </AnimatedSection>
-
-        <AnimatedSection id="education" className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">Education</h2>
-          <Timeline items={educationItems} />
-        </AnimatedSection> */}
-
-      <div ref={projectsRef}>
-        <AnimatedSection id="projects" className="mb-8">
-        <ProjectCarousel projects={projects} />
-      </AnimatedSection>
       </div>
 
+      {/* Timeline Section */}
+      <div ref={timelineRef} id="timeline" className="max-w-4xl mx-auto p-4">
+        <section className="py-16">
+          <h2 className="text-3xl font-bold mb-8 text-center text-white">Experience & Education</h2>
+          <Timeline items={timelineItems} />
+        </section>
+      </div>
 
-        <div ref={contactRef}>
-        <AnimatedSection id="contact" className="mb-8">
+      {/* Projects Section: Make ProjectsScramble full width */}
+      <div ref={projectsRef} id="projects" className="w-full">
+        <AnimatedSection className="mb-8">
+          <h2 className="text-3xl font-bold mb-8 text-center text-white">Projects</h2>
+          <ProjectsScramble projects={projects} />
+        </AnimatedSection>
+      </div>
+
+      {/* Contact Section */}
+      <div ref={contactRef} id="contact" className="max-w-4xl mx-auto p-4">
+        <AnimatedSection className="mb-8">
           <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">Contact</h2>
           <form className="space-y-4">
             <div>
@@ -372,13 +385,7 @@ const Portfolio = () => {
             </a>
           </div>
         </AnimatedSection>
-        </div>
       </div>
-
-
-
-
-
 
       {selectedProject && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" onClick={() => setSelectedProject(null)}>
@@ -389,14 +396,16 @@ const Portfolio = () => {
                 <p className="text-sm text-gray-500 dark:text-gray-300">
                   {selectedProject.description}
                 </p>
-                <div className="mt-4">
-                  <h4 className="text-md font-medium text-gray-700 dark:text-gray-300">Technologies:</h4>
-                  <div className="flex flex-wrap justify-center mt-2">
-                    {selectedProject.technologies.map((tech, index) => (
-                      <span key={index} className="px-2 py-1 m-1 text-sm text-white bg-blue-500 rounded">{tech}</span>
-                    ))}
+                {selectedProject.technologies && (
+                  <div className="mt-4">
+                    <h4 className="text-md font-medium text-gray-700 dark:text-gray-300">Technologies:</h4>
+                    <div className="flex flex-wrap justify-center mt-2">
+                      {selectedProject.technologies.map((tech, index) => (
+                        <span key={index} className="px-2 py-1 m-1 text-sm text-white bg-blue-500 rounded">{tech}</span>
+                      ))}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
               <div className="items-center px-4 py-3">
                 <a

@@ -14,3 +14,180 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Add smooth scrolling to the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Add glow effect for title */
+.glow-effect {
+  animation: enhanced-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes enhanced-glow {
+  from {
+    text-shadow: 
+      0 0 10px rgba(96, 165, 250, 0.5),
+      0 0 20px rgba(96, 165, 250, 0.3),
+      0 0 30px rgba(96, 165, 250, 0.2);
+  }
+  to {
+    text-shadow: 
+      0 0 20px rgba(96, 165, 250, 0.6),
+      0 0 30px rgba(96, 165, 250, 0.4),
+      0 0 40px rgba(96, 165, 250, 0.3),
+      0 0 50px rgba(96, 165, 250, 0.2);
+  }
+}
+
+/* Add hover effect for tech tags */
+.tech-tag {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.tech-tag:hover {
+  transform: translateY(-2px);
+  background: rgba(96, 165, 250, 0.2);
+  box-shadow: 
+    0 0 15px rgba(96, 165, 250, 0.3),
+    0 0 30px rgba(96, 165, 250, 0.2);
+}
+
+/* Glowing orbs */
+.glowing-orb-1,
+.glowing-orb-2,
+.glowing-orb-3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.5;
+  animation: float 10s infinite ease-in-out;
+}
+
+.glowing-orb-1 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at center, rgba(56, 189, 248, 0.7), rgba(56, 189, 248, 0));
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.glowing-orb-2 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, rgba(168, 85, 247, 0.7), rgba(168, 85, 247, 0));
+  bottom: 20%;
+  right: 15%;
+  animation-delay: -3s;
+}
+
+.glowing-orb-3 {
+  width: 250px;
+  height: 250px;
+  background: radial-gradient(circle at center, rgba(59, 130, 246, 0.7), rgba(59, 130, 246, 0));
+  bottom: 30%;
+  left: 30%;
+  animation-delay: -6s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(50px, -30px) scale(1.1);
+  }
+  50% {
+    transform: translate(0, -60px) scale(1);
+  }
+  75% {
+    transform: translate(-50px, -30px) scale(0.9);
+  }
+}
+
+/* Add glass effect to the project card */
+.backdrop-blur-lg {
+  backdrop-filter: blur(16px);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Add smooth transition to the entire card */
+.backdrop-blur-lg {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.backdrop-blur-lg:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 8px 16px -4px rgba(0, 0, 0, 0.2),
+    0 0 30px rgba(96, 165, 250, 0.2);
+}
+
+/* Add styles for stacked cards */
+.card-stack {
+  perspective: 1000px;
+}
+
+.card-stack-item {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Enhanced backdrop blur for cards */
+.backdrop-blur-lg {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Smooth transitions for card navigation */
+.card-navigation {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-navigation:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
