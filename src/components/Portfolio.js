@@ -91,11 +91,10 @@ const Portfolio = () => {
   const NavLink = ({ sectionRef, children }) => (
     <button
       onClick={() => scrollToSection(sectionRef)}
-      className={`px-3 py-2 rounded-md text-sm font-medium ${
-        activeSection === sectionRef
+      className={`px-3 py-2 rounded-md text-sm font-medium ${activeSection === sectionRef
           ? 'bg-blue-500 text-white'
           : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-      }`}
+        }`}
     >
       {children}
     </button>
@@ -142,39 +141,101 @@ const Portfolio = () => {
   // ];
 
 
-  
-    const projects = [
+
+  const projects = [
     {
-      title: "AI Chat Application",
-      description: `• Built a real-time chat application using Next.js 13, integrating OpenAI's GPT-3.5 API for intelligent responses
-• Implemented WebSocket connections with Socket.io, enabling instant message delivery with 50ms latency
-• Designed a responsive UI with Tailwind CSS and Framer Motion, achieving a 95+ mobile responsiveness score
-• Deployed using Docker and AWS EC2, maintaining 99.9% uptime and handling 1000+ daily active users`,
-      tech: ["Next.js", "OpenAI", "Socket.io", "Docker", "AWS"],
-      link: "https://github.com/yourusername/ai-chat",
-      demo: "https://ai-chat-demo.com"
+      title: "Nurture Nest / Baby Care",
+      description: [
+        "Boosted user engagement by 30% through engineering a job module using React and Redux, allowing seamless user interaction.",
+        "Reduced time-to-hire by 25% with an Applicant Hiring portal built using Firebase authentication, improving security and efficiency.",
+        "Enhanced communication with real-time chat implementation using Socket.io, enabling instant messaging between parents and caregivers.",
+        "Integrated dynamic notifications and user profiles to personalize user experience and increase engagement rates."
+      ],
+      tech: ["React", "Redux", "Firebase", "Socket.io", "Node.js"],
+      image: "https://zero-to-three.s3.amazonaws.com/images/1404/736d9d21-7a02-4ab3-a02b-e5de2f5942f9-small.jpg?1487014786",
+      link: "https://github.com/SwarajsingPatil/nurture-nest",
+      demo: "https://nurture-nest-demo.com"
     },
     {
-      title: "E-Commerce Platform",
-      description: `• Developed a full-stack e-commerce platform using MERN stack with TypeScript, serving 10k+ monthly users
-• Integrated Stripe payment gateway and implemented cart functionality with Redux Toolkit for state management
-• Optimized image loading using Next.js Image component and lazy loading, improving load time by 40%
-• Implemented JWT authentication and role-based access control for secure user management`,
-      tech: ["React", "Node.js", "MongoDB", "TypeScript", "Redux"],
-      link: "https://github.com/yourusername/ecommerce",
-      demo: "https://ecommerce-demo.com"
+      title: "SubSplit-Subscription",
+      description: [
+        "Streamlined shared memberships and interest-based groups management with MongoDB and Node.js, allowing users to share subscriptions.",
+        "Implemented dynamic group creation and automatic payment splitting for services like Netflix and Spotify, increasing user convenience.",
+        "Enhanced notification system to alert users about upcoming payments and membership renewals, boosting engagement and retention.",
+        "Deployed the platform using AWS, ensuring high availability and scalability, handling hundreds of subscriptions per day."
+      ],
+      tech: ["MongoDB", "Node.js", "Express", "AWS", "JavaScript"],
+      image: "/path-to-project-image.jpg",
+      link: "https://github.com/SwarajsingPatil/CS546_Group28_Final_Project",
+      demo: "https://subsplit-subscription-demo.com"
+    },
+    {
+      title: "Multiplayer Tic-Tac-Toe",
+      description: [
+        "Developed a real-time multiplayer Tic-Tac-Toe game using FluidFramework, allowing users to collaborate and play together in real-time.",
+        "Implemented Puppeteer for automated testing and Docker for containerized deployment, ensuring smooth scalability.",
+        "Included login and admin features, providing personalized game experiences and moderation for a secure gameplay environment.",
+        "Deployed the game using cloud services, providing high availability and low latency for global users."
+      ],
+      tech: ["FluidFramework", "Puppeteer", "Docker", "Node.js", "JavaScript"],
+      image: "/path-to-project-image.jpg",
+      link: "https://github.com/SwarajsingPatil/TournamentServer",
+      demo: "https://multiplayer-tic-tac-toe-demo.com"
     },
     {
       title: "Portfolio Website",
-      description: `• Created a modern portfolio website using React and Three.js for interactive 3D elements
-• Implemented smooth animations and transitions using Framer Motion
-• Achieved 100% lighthouse performance score through optimization techniques
-• Designed and developed a custom CMS for easy content management`,
+      description: [
+        "Created a modern portfolio website using React and Three.js for interactive 3D elements",
+        "Implemented smooth animations and transitions using Framer Motion",
+        "Achieved 100% lighthouse performance score through optimization techniques",
+        "Designed and developed a custom CMS for easy content management"
+      ],
       tech: ["React", "Three.js", "Framer Motion", "Tailwind CSS"],
-      link: "https://github.com/yourusername/portfolio",
+      link: "https://github.com/SwarajsingPatil/Portfolio_website",
       demo: "https://your-portfolio.com"
+    },
+    {
+      title: "Fast API E-Commerce",
+      description: [
+        "Optimized product browsing and purchasing by developing an e-commerce platform with Python FastAPI, achieving a faster product search and checkout process.",
+        "Restricted unauthorized access attempts by integrating JWT authentication, ensuring secure user logins and transactions.",
+        "Improved message processing time by 60% and deployment time by 30% with Kafka and Docker, providing real-time product updates and faster scaling.",
+        "Implemented advanced inventory management system to track stock levels and streamline order fulfillment, improving operational efficiency."
+      ],
+      tech: ["FastAPI", "Python", "JWT", "Kafka", "Docker", "PostgreSQL"],
+      image: "https://d1u4v6449fgzem.cloudfront.net/2020/03/The-Ecommerce-Business-Model-Explained.jpg",
+      link: "",
+      demo: "https://fastapi-ecommerce-demo.com"
+    },
+    {
+      title: "Java-web-bookstore",
+      description: [
+        "Developed with Spring Boot and Thymeleaf, this web bookstore allows users to browse and purchase books seamlessly.",
+        "Optimized MySQL queries, resulting in 25% faster data retrieval and improving overall user experience by reducing wait times.",
+        "Implemented shopping cart functionality with real-time updates and checkout process, increasing conversion rates by 15%.",
+        "Enhanced search feature with Elasticsearch to provide more accurate and faster results, helping customers find books quickly."
+      ],
+      tech: ["Spring Boot", "Thymeleaf", "MySQL", "Elasticsearch", "Java"],
+      image: "/path-to-project-image.jpg",
+      link: "",
+      demo: "https://java-web-bookstore-demo.com"
+    },
+    {
+      title: "Stowage Planner",
+      description: [
+        "Built with Flask, this web app is designed to optimize storage space for warehouses and containers by planning stowage locations.",
+        "Reduced 40% loading time by implementing efficient algorithms for container and goods categorization.",
+        "Increased user satisfaction by 30% with a responsive design and interactive 3D visualizations of storage layouts using WebGL.",
+        "Implemented real-time updates and collaborative features, allowing warehouse managers to coordinate better and make quick decisions."
+      ],
+      tech: ["Flask", "Python", "WebGL", "JavaScript", "CSS"],
+      image: "/path-to-project-image.jpg",
+      link: "",
+      demo: "https://stowage-planner-demo.com"
     }
+
   ];
+
 
 
   const navbarAnimation = useSpring({
@@ -233,8 +294,8 @@ const Portfolio = () => {
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-2xl w-full h-full max-w-7xl max-h-[95vh] flex flex-col">
           <div className="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700">
             <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Resume</h2>
-            <button 
-              onClick={toggleResume} 
+            <button
+              onClick={toggleResume}
               className="text-gray-600 dark:text-gray-400 hover:text-gray-800 dark:hover:text-white transition-colors"
             >
               <XIcon size={24} />
@@ -264,62 +325,123 @@ const Portfolio = () => {
   return (
     <animated.div style={darkModeAnimation} className="min-h-screen" ref={containerRef}>
       <animated.nav style={navbarAnimation} className="bg-white dark:bg-gray-800 shadow-md fixed top-0 left-0 right-0 z-10">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <span className="font-semibold text-xl text-gray-800 dark:text-white">Swarajsing Patil</span>
-            </div>
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-4">
-                <NavLink sectionRef={aboutRef}>About</NavLink>
-                <NavLink sectionRef={skillsRef}>Skills</NavLink>
-                <NavLink sectionRef={timelineRef}>Experience & Education</NavLink>
-                <NavLink sectionRef={projectsRef}>Projects</NavLink>
-                <NavLink sectionRef={contactRef}>Contact</NavLink>
-              </div>
-            </div>
-            <div className="flex items-center">
-              <div className="md:hidden ml-2">
-                <button
-                  onClick={() => setMenuOpen(!menuOpen)}
-                  className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                >
-                  <span className="sr-only">Open main menu</span>
-                  {menuOpen ? <XIcon className="block h-6 w-6" /> : <MenuIcon className="block h-6 w-6" />}
-                </button>
-              </div>
-            </div>
+      <nav className="bg-white dark:bg-gray-800 shadow-md fixed top-0 left-0 right-0 z-10">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <span className="font-semibold text-xl text-gray-800 dark:text-white">
+              Swarajsing Patil
+            </span>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex ml-10 space-x-4">
+            <a
+              href="#about"
+              className="text-gray-800 dark:text-white px-4 py-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300"
+            >
+              About
+            </a>
+            <a
+              href="#skills"
+              className="text-gray-800 dark:text-white px-4 py-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300"
+            >
+              Skills
+            </a>
+            <a
+              href="#timeline"
+              className="text-gray-800 dark:text-white px-4 py-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300"
+            >
+              Experience & Education
+            </a>
+            <a
+              href="#projects"
+              className="text-gray-800 dark:text-white px-4 py-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300"
+            >
+              Projects
+            </a>
+            <a
+              href="#contact"
+              className="text-gray-800 dark:text-white px-4 py-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 transition duration-300"
+            >
+              Contact
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setMenuOpen(!menuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+            >
+              <span className="sr-only">Open main menu</span>
+              {menuOpen ? (
+                <XIcon className="block h-6 w-6" />
+              ) : (
+                <MenuIcon className="block h-6 w-6" />
+              )}
+            </button>
           </div>
         </div>
-        {menuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <button onClick={() => scrollToSection(aboutRef)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">About</button>
-              <button onClick={() => scrollToSection(skillsRef)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Skills</button>
-              <button onClick={() => scrollToSection(timelineRef)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Experience & Education</button>
-              <button onClick={() => scrollToSection(projectsRef)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Projects</button>
-              <button onClick={() => scrollToSection(contactRef)} className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700">Contact</button>
-            </div>
-          </div>
-        )}
-      </animated.nav>
+      </div>
 
-      <HeroSection 
-        scrollPosition={scrollPosition} 
-        darkMode={darkMode} 
+      {/* Mobile Menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-white dark:bg-gray-800 shadow-md">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a
+              href="#about"
+              className="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
+            >
+              About
+            </a>
+            <a
+              href="#skills"
+              className="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
+            >
+              Skills
+            </a>
+            <a
+              href="#timeline"
+              className="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
+            >
+              Experience & Education
+            </a>
+            <a
+              href="#projects"
+              className="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
+            >
+              Projects
+            </a>
+            <a
+              href="#contact"
+              className="text-gray-800 dark:text-white block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-300"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      )}
+    </nav>
+</animated.nav>
+
+
+      <HeroSection
+        scrollPosition={scrollPosition}
+        darkMode={darkMode}
         scrollToWorkExperience={scrollToWorkExperience}
       />
 
       {/* About Section */}
       <div ref={aboutRef} id="about" className="max-w-4xl mx-auto p-4">
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">About Me</h2>
-          <p className="text-gray-600 dark:text-gray-300">
+        <section className="my-8">
+          <h2 className="text-2xl font-semibold mb-4 text-white-800 dark:text-white">About Me</h2>
+          <p className="text-white-600 dark:text-gray-300">
             Experienced DevOps Engineer and Full Stack Developer with a strong background in cloud technologies,
             web development, and data engineering. Passionate about creating scalable and efficient solutions.
           </p>
-          <button 
-            onClick={toggleResume} 
+          <button
+            onClick={toggleResume}
             className="mt-4 flex items-center px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"
           >
             <DownloadIcon className="mr-2" /> View Resume
@@ -354,26 +476,52 @@ const Portfolio = () => {
 
       {/* Contact Section */}
       <div ref={contactRef} id="contact" className="max-w-4xl mx-auto p-4">
-        <AnimatedSection className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-white">Contact</h2>
-          <form className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
-              <input type="text" id="name" name="name" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
-              <input type="email" id="email" name="email" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
-            </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300">Message</label>
-              <textarea id="message" name="message" rows="4" className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
-            </div>
-            <div>
-              <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors">Send Message</button>
-            </div>
-          </form>
-          <div className="flex space-x-4 mt-4">
+      <AnimatedSection className="mb-8">
+        <h2 className="text-2xl font-semibold mb-4 text-white dark:text-white">Contact</h2>
+        <form className="space-y-4">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-white dark:text-gray-300">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              className="mt-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 dark:bg-gray-800 dark:border-gray-600 text-black dark:text-white dark:focus:border-blue-300 dark:focus:ring-blue-500 h-12 px-4 text-sm transition-all duration-300 ease-in-out"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-white dark:text-gray-300">Email</label>
+            <input
+              type="text"
+              id="email"
+              name="email"
+              className="mt-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 dark:bg-gray-800 dark:border-gray-600 text-black dark:text-white dark:focus:border-blue-300 dark:focus:ring-blue-500 h-12 px-4 text-sm transition-all duration-300 ease-in-out"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-white dark:text-gray-300">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="Enter your message here"
+              className="mt-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 dark:bg-gray-800 dark:border-gray-600 text-black dark:text-white dark:focus:border-blue-300 dark:focus:ring-blue-500 p-4 text-sm transition-all duration-300 ease-in-out resize-none"
+            />
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              className="px-6 py-3 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50 active:bg-blue-700 transition-all duration-300 ease-in-out transform hover:scale-105 dark:bg-blue-600 dark:hover:bg-blue-500 dark:active:bg-blue-700"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+
+        <div className="mt-10 py-6 text-center bg-gray-800 text-white">
+          <div className="flex justify-center space-x-6 mb-4">
             <a href="mailto:swarajsingpatil@gmail.com" className="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
               <MailIcon size={24} />
             </a>
@@ -384,8 +532,15 @@ const Portfolio = () => {
               <GithubIcon size={24} />
             </a>
           </div>
-        </AnimatedSection>
-      </div>
+
+          <p className="text-sm text-gray-400">Made by Swarajsing Patil</p>
+
+          <p className="text-sm text-gray-400">
+            &copy; {new Date().getFullYear()} Swarajsing Patil. All Rights Reserved.
+          </p>
+        </div>
+      </AnimatedSection>
+    </div>
 
       {selectedProject && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" onClick={() => setSelectedProject(null)}>

@@ -41,7 +41,7 @@ const ProjectCarousel = ({ projects }) => {
     <div className="project-carousel relative overflow-hidden w-full" style={{ height: '600px' }}>
       <animated.div
         ref={carouselRef}
-        style={{ 
+        style={{
           x,
           cursor: isDragging ? 'grabbing' : 'grab',
           display: 'flex',

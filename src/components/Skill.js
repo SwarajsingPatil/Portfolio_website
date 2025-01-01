@@ -4,40 +4,31 @@ import { useInView } from 'react-intersection-observer';
 import { FaReact, FaNodeJs, FaPython, FaAws, FaDocker } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiMongodb, SiPostgresql, SiKubernetes } from 'react-icons/si';
 
-const Skill = ({ name, level, icon: Icon }) => {
+const Skill = ({ name, level }) => {
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
   });
 
-  const props = useSpring({
-    width: inView ? `${level}%` : '0%',
-    config: config.molasses,
-  });
-
-  const iconProps = useSpring({
+  const textProps = useSpring({
     opacity: inView ? 1 : 0,
     transform: inView ? 'translateY(0)' : 'translateY(20px)',
-    config: config.wobbly,
+    config: config.stiff,
   });
 
   return (
-    <div ref={ref} className="mb-6">
-      <div className="flex items-center mb-2">
-        <animated.div style={iconProps} className="mr-3">
-          <Icon size={24} className="text-blue-500" />
-        </animated.div>
-        <span className="text-lg font-semibold text-white">{name}</span>
-      </div>
-      <div className="h-4 bg-gray-700 rounded-full overflow-hidden">
-        <animated.div
-          style={props}
-          className="h-full bg-blue-500 rounded-full"
-        />
-      </div>
+    <div ref={ref} className="mb-8">
+      <animated.div style={textProps} className="relative group">
+        <span className="text-xl font-semibold text-white">
+          {name}
+        </span>
+        <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-all duration-300 ease-in-out" />
+        {/* <span className="text-sm text-gray-400 ml-2">{level}%</span> */}
+      </animated.div>
     </div>
   );
 };
+
 
 const SkillGrid = ({ skills }) => {
   const [ref, inView] = useInView({
@@ -70,9 +61,10 @@ const Skills = () => {
   const mainSkills = [
     { name: 'React', level: 90, icon: FaReact },
     { name: 'Node.js', level: 85, icon: FaNodeJs },
+    { name: 'FastAPI', level: 90, icon: SiJavascript },
+    // { name: 'Django', level: 90, icon: SiJavascript },
     { name: 'Python', level: 80, icon: FaPython },
-    { name: 'JavaScript', level: 90, icon: SiJavascript },
-    { name: 'TypeScript', level: 75, icon: SiTypescript },
+    { name: 'JavaScript', level: 75, icon: SiTypescript },
   ];
 
   const otherSkills = [
@@ -84,10 +76,12 @@ const Skills = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-900">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-8 text-center text-white">Skills</h2>
-        <div className="mb-12">
+    <section className="pt-20 bg-gray-900">
+      <div className="container mx-auto px-6">
+        <h2 className="text-4xl font-extrabold mb-10 text-center text-white">Skills & Technologies</h2>
+
+        <div className="mb-16">
+          <h3 className="text-2xl font-bold mb-6 text-center text-white">Core Skills</h3>
           {mainSkills.map((skill, index) => (
             <Skill key={index} {...skill} />
           ))}

@@ -8,8 +8,8 @@ const FancyButton = ({ isInverted, onClick }) => {
 
   const buttonSpring = useSpring({
     scale: isHovered ? 1.05 : 1,
-    boxShadow: isHovered 
-      ? '0 10px 25px rgba(0, 0, 0, 0.2)' 
+    boxShadow: isHovered
+      ? '0 10px 25px rgba(0, 0, 0, 0.2)'
       : '0 5px 15px rgba(0, 0, 0, 0.1)',
     config: config.wobbly,
   });
@@ -21,10 +21,9 @@ const FancyButton = ({ isInverted, onClick }) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
       className={`
-        relative px-6 py-3 rounded-full font-bold text-base
-        transition-all duration-300 focus:outline-none
+        relative px-6 py-3 rounded-full font-bold text-base text-black
+        transition-all duration-300 focus:outline-none dark:text-white
         focus:ring-2 focus:ring-opacity-50 overflow-hidden
-        ${isInverted ? 'text-gray-200' : 'text-gray-200'}
         before:content-[''] before:absolute before:inset-0 before:-z-10
         before:rounded-full before:bg-gradient-to-r before:from-pink-500
         before:via-purple-500 before:to-indigo-500 before:p-0.5
@@ -75,14 +74,14 @@ const HeroSection = ({ scrollPosition, scrollToWorkExperience }) => {
     "Problem Solver",
     "Solutions Architect"
   ];
-  
+
   const [currentRole, setCurrentRole] = useState('');
   const [isScrambling, setIsScrambling] = useState(true);
   const [roleIndex, setRoleIndex] = useState(0);
   const [isCompleted, setIsCompleted] = useState(false);
-  
+
   const characters = 'abcdefghijklmnopqrstuvwxyz/_';
-  
+
   const scrambleText = useCallback((finalText, progress) => {
     return finalText
       .split('')
@@ -100,21 +99,21 @@ const HeroSection = ({ scrollPosition, scrollToWorkExperience }) => {
     const targetText = roles[roleIndex];
     let animationFrameId;
     let timeoutId;
-    
+
     setIsCompleted(false);
     setIsScrambling(true);
-    
+
     const updateText = () => {
       if (!isScrambling) return;
-      
+
       frame++;
       if (frame % 3 === 0) {
         currentProgress++;
       }
-      
+
       const newText = scrambleText(targetText, currentProgress);
       setCurrentRole(newText);
-      
+
       if (currentProgress <= targetText.length) {
         animationFrameId = requestAnimationFrame(updateText);
       } else {
@@ -126,7 +125,7 @@ const HeroSection = ({ scrollPosition, scrollToWorkExperience }) => {
         }, 3000);
       }
     };
-    
+
     updateText();
     return () => {
       currentProgress = targetText.length;
@@ -139,22 +138,22 @@ const HeroSection = ({ scrollPosition, scrollToWorkExperience }) => {
         <animated.h1 style={nameTransition} className="font-bold mb-4">
           Swarajsing Patil
         </animated.h1>
-        
+
         <div className="h-12 relative text-xl mb-6 font-bold">
-          <p 
+          <p
             className={`text-2xl font-mono tracking-wide transition-all duration-500 bg-gradient-to-r from-blue-400 via-purple-500 to-indigo-600 text-transparent bg-clip-text
               ${isCompleted ? 'glow-effect' : ''}`}
             style={{
-              textShadow: isCompleted 
-                ? '0 0 10px rgba(96, 165, 250, 0.8), 0 0 20px rgba(139, 92, 246, 0.6)' 
+              textShadow: isCompleted
+                ? '0 0 10px rgba(96, 165, 250, 0.8), 0 0 20px rgba(139, 92, 246, 0.6)'
                 : 'none',
               transition: 'text-shadow 0.5s ease-in-out, color 0.5s ease-in-out'
             }}
           >
             {currentRole || '\u00A0'}
           </p>
-          
-          {/* <div 
+
+          {/* <div
             className={`absolute bottom-0 left-1/2 transform -translate-x-1/2 h-px bg-blue-400 transition-all duration-500
               ${isCompleted ? 'w-full opacity-50' : 'w-0 opacity-0'}`}
             style={{
