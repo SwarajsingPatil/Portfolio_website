@@ -6,6 +6,7 @@ import HeroSection from './HeroSection';
 import Timeline from './Timeline';
 import Skills from './Skill';
 import ProjectsScramble from './ProjectsScramle';
+import emailjs from 'emailjs-com';
 
 const AnimatedSection = ({ children, className }) => {
   const [ref, inView] = useInView({
@@ -25,6 +26,120 @@ const AnimatedSection = ({ children, className }) => {
     </animated.section>
   );
 };
+
+
+const ContactForm = () => {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState('');
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        'service_e25m6jh',
+        'template_0d1wbnv',
+        formData,
+        'AJh73pwi1V_UiGZhu'
+      )
+      .then(
+        (response) => {
+          console.log('SUCCESS!', response.status, response.text);
+          setStatus('Message sent successfully!');
+          setFormData({ name: '', email: '', message: '' });
+        },
+        (error) => {
+          console.error('FAILED...', error);
+          setStatus('Failed to send message. Please try again later.');
+        }
+      );
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div>
+        <label
+          htmlFor="name"
+          className="block text-sm font-medium text-white dark:text-gray-300"
+        >
+          Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          className="mt-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 dark:bg-gray-800 dark:border-gray-600 text-black dark:text-white dark:focus:border-blue-300 dark:focus:ring-blue-500 h-12 px-4 text-sm transition-all duration-300 ease-in-out"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          htmlFor="email"
+          className="block text-sm font-medium text-white dark:text-gray-300"
+        >
+          Email
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          className="mt-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 dark:bg-gray-800 dark:border-gray-600 text-black dark:text-white dark:focus:border-blue-300 dark:focus:ring-blue-500 h-12 px-4 text-sm transition-all duration-300 ease-in-out"
+          required
+        />
+      </div>
+
+      <div>
+        <label
+          htmlFor="message"
+          className="block text-sm font-medium text-white dark:text-gray-300"
+        >
+          Message
+        </label>
+        <textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          rows="4"
+          placeholder="Enter your message here"
+          className="mt-1 block w-full rounded-md border-2 border-gray-300 shadow-sm focus:border-blue-500 focus:ring-2 focus:ring-blue-400 focus:ring-opacity-50 dark:bg-gray-800 dark:border-gray-600 text-black dark:text-white dark:focus:border-blue-300 dark:focus:ring-blue-500 p-4 text-sm transition-all duration-300 ease-in-out resize-none"
+          required
+        ></textarea>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          className="px-6 py-3 bg-blue-500 text-white rounded-md shadow-md hover:bg-blue-600 focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50 active:bg-blue-700 transition-all duration-300 ease-in-out transform hover:scale-105 dark:bg-blue-600 dark:hover:bg-blue-500 dark:active:bg-blue-700"
+        >
+          Send Message
+        </button>
+      </div>
+      {status && (
+        <p
+          className={`mt-2 text-sm ${
+            status.includes("successfully")
+              ? "text-green-500"
+              : "text-red-500"
+          }`}
+        >
+          {status}
+        </p>
+      )}
+    </form>
+  );
+};
+
+
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('about');
@@ -478,7 +593,8 @@ const Portfolio = () => {
       <div ref={contactRef} id="contact" className="max-w-4xl mx-auto p-4">
       <AnimatedSection className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 text-white dark:text-white">Contact</h2>
-        <form className="space-y-4">
+        <ContactForm />
+        {/* <form className="space-y-4">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-white dark:text-gray-300">Name</label>
             <input
@@ -518,7 +634,7 @@ const Portfolio = () => {
               Send Message
             </button>
           </div>
-        </form>
+        </form> */}
 
         <div className="mt-10 py-6 text-center bg-gray-800 text-white">
           <div className="flex justify-center space-x-6 mb-4">
