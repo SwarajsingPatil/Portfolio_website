@@ -345,7 +345,7 @@ const Portfolio = () => {
       ],
       tech: ["Flask", "Python", "WebGL", "JavaScript", "CSS"],
       image: "/path-to-project-image.jpg",
-      link: "",
+      link: "https://github.com/SwarajsingPatil",
       demo: "https://stowage-planner-demo.com"
     }
 
