@@ -374,7 +374,7 @@ const Portfolio = () => {
       type: 'experience'
     },
     {
-      date: '2024-2022',
+      date: 'Sept 2022- May 2022',
       title: 'Master of Science in Computer Science',
       subtitle: 'Stevens Institute of Technology | Hoboken, USA',
       description: 'Focused on advanced topics in software engineering, cloud computing, and data science.',
@@ -402,14 +402,14 @@ const Portfolio = () => {
     //   type: 'experience'
     // },
     {
-      date: 'June 2019 – August 2019',
+      date: 'June 2019 – Aug 2019',
       title: 'Software Engineer Intern',
       subtitle: 'Feat Systems | Mumbai, India',
       description: 'Implemented OAuth and SSL for secure transactions. Enhanced backend efficiency with Python, improving processing speed by 35%. Automated data extraction for 8,000+ files using UI-Path OCR, reducing manual work by 75%.',
       type: 'experience'
     },
     {
-      date: '2017-2021',
+      date: 'Aug 2017- June 2021',
       title: "Bachelor's in Computer Engineering",
       subtitle: 'University of Mumbai | Mumbai, India',
       description: 'Built a strong foundation in software development, cloud computing, and data structures.',
