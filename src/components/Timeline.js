@@ -62,13 +62,22 @@ const Timeline = ({ items }) => {
 
   const timelineItems = [
     {
-      date: 'Present',
-      title: 'Software Engineer',
-      subtitle: 'Your Company',
-      description: 'Ready to bring my skills and experience to your team!',
+      date: 'Beyond Time',
+      title: 'Charting New Horizons',
+      subtitle: 'A ship is safest at the port, but that’s not what it’s made for.',
+      description: `The open seas call for those who dare to explore.
+Let’s set sail and navigate towards greatness 🌊 ⛵`,
       type: 'experience',
       isPresent: true,
     },
+    // {
+    //   date: 'Present',
+    //   title: 'Software Engineer',
+    //   subtitle: 'Your Company',
+    //   description: 'Ready to bring my skills and experience to your team!',
+    //   type: 'experience',
+    //   isPresent: true,
+    // },
     ...items,
 
   ];

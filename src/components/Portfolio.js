@@ -364,7 +364,15 @@ const Portfolio = () => {
     color: darkMode ? 'rgb(229, 231, 235)' : 'rgb(31, 41, 55)',
   });
 
+
   const timelineItems = [
+    {
+      date: 'July 2024 – Present',
+      title: 'Software Engineer',
+      subtitle: 'Changing the Present | New York, USA',
+      description: 'Achieved sub-100ms latency & scaled the system to process over 120,000 daily requests by architecting RESTful APIs using Node.js, Express, and PostgreSQL. Reengineered a monolithic UI into microservices using React, Redux, Docker & AWS, improving scalability by 5x.',
+      type: 'experience'
+    },
     {
       date: '2024-2022',
       title: 'Master of Science in Computer Science',
@@ -373,27 +381,72 @@ const Portfolio = () => {
       type: 'education'
     },
     {
-      date: '2022-2021',
-      title: 'DevOps Engineer',
-      subtitle: 'Sigmoid | Bengaluru, India',
-      description: 'Designed & developed full-stack web applications using React, NodeJS. Created and optimized APIs with Python and FastAPI. Managed Docker & Kubernetes for scalable solutions.',
+      date: 'March 2022 – Sept 2022',
+      title: 'Software Engineer',
+      subtitle: 'Promotehour | Mumbai, India',
+      description: 'Reduced load times from 5s to 2s, improving UX for 20,000+ users. Architected a scalable Next.js and React web app with SEO optimizations. Cut payload sizes by 40% with GraphQL, improving rendering speeds & reducing bounce rates by 15%.',
       type: 'experience'
     },
     {
+      date: 'March 2021 – March 2022',
+      title: 'DevOps Engineer',
+      subtitle: 'Sigmoid | Bengaluru, India',
+      description: 'Designed microservices with Docker & Kubernetes, scaling the app for 500,000+ concurrent users. Reduced release cycle time from 2h to 30min by automating CI/CD with Jenkins & GitLab. Integrated Kafka for real-time event processing at 500K events/sec, optimizing system reliability.',
+      type: 'experience'
+    },
+    // {
+    //   date: 'March 2020 – March 2021',
+    //   title: 'Software Engineer',
+    //   subtitle: 'Promotehour | Mumbai, India',
+    //   description: 'Developed backend services using Django, reducing API response times by 40% for 10,000 daily users. Implemented OAuth & JWT authentication, streamlining user sessions for 1M+ users. Created automation scripts that saved 14 developer hours per week, boosting productivity.',
+    //   type: 'experience'
+    // },
+    {
       date: 'June 2019 – August 2019',
-      title: 'Software Engineer Intern (RPA)',
+      title: 'Software Engineer Intern',
       subtitle: 'Feat Systems | Mumbai, India',
-      description: 'Implemented authentication technologies such as OAuth and SSL to ensure secure data transactions. Improved backend systems with Python, increasing data processing speed by 35% in high-traffic environments. Developed automation with UI-Path, processing data extraction for 8000 files using OCR, reducing 75% manual work. Utilized MySQL & PostgreSQL databases for data storage & retrieval, optimizing queries performance.',
+      description: 'Implemented OAuth and SSL for secure transactions. Enhanced backend efficiency with Python, improving processing speed by 35%. Automated data extraction for 8,000+ files using UI-Path OCR, reducing manual work by 75%.',
       type: 'experience'
     },
     {
       date: '2021-2017',
-      title: 'Bachelor\'s in Computer Engineering',
+      title: "Bachelor's in Computer Engineering",
       subtitle: 'University of Mumbai | Mumbai, India',
-      description: 'Gained a strong foundation in computer science fundamentals and software development.',
+      description: 'Built a strong foundation in software development, cloud computing, and data structures.',
       type: 'education'
-    },
-  ];
+    }
+];
+
+  // const timelineItems = [
+  //   {
+  //     date: '2024-2022',
+  //     title: 'Master of Science in Computer Science',
+  //     subtitle: 'Stevens Institute of Technology | Hoboken, USA',
+  //     description: 'Focused on advanced topics in software engineering, cloud computing, and data science.',
+  //     type: 'education'
+  //   },
+  //   {
+  //     date: '2022-2021',
+  //     title: 'DevOps Engineer',
+  //     subtitle: 'Sigmoid | Bengaluru, India',
+  //     description: 'Designed & developed full-stack web applications using React, NodeJS. Created and optimized APIs with Python and FastAPI. Managed Docker & Kubernetes for scalable solutions.',
+  //     type: 'experience'
+  //   },
+  //   {
+  //     date: 'June 2019 – August 2019',
+  //     title: 'Software Engineer Intern (RPA)',
+  //     subtitle: 'Feat Systems | Mumbai, India',
+  //     description: 'Implemented authentication technologies such as OAuth and SSL to ensure secure data transactions. Improved backend systems with Python, increasing data processing speed by 35% in high-traffic environments. Developed automation with UI-Path, processing data extraction for 8000 files using OCR, reducing 75% manual work. Utilized MySQL & PostgreSQL databases for data storage & retrieval, optimizing queries performance.',
+  //     type: 'experience'
+  //   },
+  //   {
+  //     date: '2021-2017',
+  //     title: 'Bachelor\'s in Computer Engineering',
+  //     subtitle: 'University of Mumbai | Mumbai, India',
+  //     description: 'Gained a strong foundation in computer science fundamentals and software development.',
+  //     type: 'education'
+  //   },
+  // ];
 
   const ResumeModal = ({ toggleResume }) => {
     useEffect(() => {

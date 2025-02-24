@@ -70,7 +70,6 @@ const HeroSection = ({ scrollPosition, scrollToWorkExperience }) => {
   const roles = [
     "Full Stack Developer",
     "Software Engineer",
-    "UI/UX Enthusiast",
     "Problem Solver",
     "Solutions Architect"
   ];
