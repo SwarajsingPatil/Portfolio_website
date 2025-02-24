@@ -409,7 +409,7 @@ const Portfolio = () => {
       type: 'experience'
     },
     {
-      date: '2021-2017',
+      date: '2017-2021',
       title: "Bachelor's in Computer Engineering",
       subtitle: 'University of Mumbai | Mumbai, India',
       description: 'Built a strong foundation in software development, cloud computing, and data structures.',
