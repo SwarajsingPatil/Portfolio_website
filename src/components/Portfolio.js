@@ -323,17 +323,17 @@ const Portfolio = () => {
       demo: "https://fastapi-ecommerce-demo.com"
     },
     {
-      title: "Java-web-bookstore",
+      title: "LLM-Based Document Search",
       description: [
-        "Developed with Spring Boot and Thymeleaf, this web bookstore allows users to browse and purchase books seamlessly.",
-        "Optimized MySQL queries, resulting in 25% faster data retrieval and improving overall user experience by reducing wait times.",
-        "Implemented shopping cart functionality with real-time updates and checkout process, increasing conversion rates by 15%.",
-        "Enhanced search feature with Elasticsearch to provide more accurate and faster results, helping customers find books quickly."
+        "Developed a robust document search system using Llama-Index, Hugging Face, and Pinecone, enabling high-accuracy search results.",
+        "Leveraged Llama-Index for efficient document indexing and retrieval, optimizing search performance for large datasets.",
+        "Integrated Hugging Face's transformer models to enhance natural language understanding, improving query interpretation.",
+        "Implemented Pinecone as a vector database to store and retrieve document embeddings efficiently, ensuring scalability and speed."
       ],
-      tech: ["Spring Boot", "Thymeleaf", "MySQL", "Elasticsearch", "Java"],
-      image: "/path-to-project-image.jpg",
-      link: "",
-      demo: "https://java-web-bookstore-demo.com"
+      tech: ["Llama-Index", "Hugging Face", "Pinecone", "Python", "Transformers"],
+      image: "https://docs.llamaindex.ai/en/stable/_static/logo.png",
+      link: "https://github.com/SwarajsingPatil/LLM-document-search",
+      demo: "https://docs.llamaindex.ai/en/stable/examples/"
     },
     {
       title: "Stowage Planner",
