@@ -15,7 +15,7 @@ const TimelineItem = ({ date, title, subtitle, description, type, isPresent }) =
 
   return (
     <animated.div style={animationProps} className="flex items-center mb-12">
-      <div className="w-1/2 text-right pr-4">
+      <div className="hidden md:block w-1/2 text-right pr-6">
         {(type === 'education') && (
           <div className="bg-gray-900 p-4 rounded-lg shadow-lg">
             <h3 className="text-white text-lg font-bold">{title}</h3>
@@ -27,22 +27,33 @@ const TimelineItem = ({ date, title, subtitle, description, type, isPresent }) =
       </div>
       <div className="relative z-10">
         <div
-          className={`w-8 h-8 flex items-center justify-center ${
+          className={`w-10 h-10 flex items-center justify-center ${
             isPresent ? 'bg-green-500' : 'bg-blue-500'
           } rounded-full shadow-lg`}
         >
           <Icon size={20} className="text-white" />
         </div>
       </div>
-      <div className="w-1/2 pl-4">
+      {/* Desktop view - right side for experience */}
+      <div className="hidden md:block w-1/2 pl-6">
         {type === 'experience' && (
-          <div className="bg-gray-900 p-4 rounded-lg shadow-lg">
+          <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
             <h3 className="text-white text-lg font-bold">{title}</h3>
             <h4 className="text-gray-400 text-md mb-2">{subtitle}</h4>
             <p className="text-gray-300 text-sm">{description}</p>
             <span className="text-gray-500 text-sm">{date}</span>
           </div>
         )}
+      </div>
+
+      {/* Mobile view - always show to the right of the timeline */}
+      <div className="md:hidden w-4/5 pl-4">
+        <div className="bg-gray-900 p-6 rounded-lg shadow-lg">
+          <h3 className="text-white text-lg font-bold">{title}</h3>
+          <h4 className="text-gray-400 text-md mb-2">{subtitle}</h4>
+          <p className="text-gray-300 text-sm">{description}</p>
+          <span className="text-gray-500 text-sm">{date}</span>
+        </div>
       </div>
     </animated.div>
   );

@@ -22,7 +22,7 @@ const Skill = ({ name, level }) => {
         <span className="text-xl font-semibold text-white">
           {name}
         </span>
-        <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-all duration-300 ease-in-out" />
+        <span className="absolute left-0 bottom-0 w-full h-[2px] bg-blue-500 scale-x-0 group-hover:scale-x-100 transition-all duration-300 ease-in-out origin-left" />
         {/* <span className="text-sm text-gray-400 ml-2">{level}%</span> */}
       </animated.div>
     </div>
