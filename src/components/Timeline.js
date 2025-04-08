@@ -67,7 +67,7 @@ const Timeline = ({ items }) => {
 
   const containerProps = useSpring({
     // opacity: inView ? 1 : 1,
-    // transform: inView ? 'translateY(0)' : 'translateY(50px)',
+    transform: inView ? 'translateY(0)' : 'translateY(50px)',
     config: config.gentle,
   });
 
